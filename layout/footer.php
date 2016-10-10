@@ -1,4 +1,4 @@
-<footer>
+        <footer>
             <p>&copy; AirPupnMeow.com</p>
         </footer>
     </div>

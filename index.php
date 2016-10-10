@@ -1,26 +1,20 @@
 <?php require 'lib/functions.php';
 
+    $pets = get_pets();
+    $pupCount = count($pets);
 
-$pets = get_pets();
-$pupCount = count($pets);
-
-$cleverMessage= "All the love, none of the crap!";
+    $cleverMessage= "All the love, none of the crap!";
 
 ?>
 <?php require 'layout/header.php'; ?>
 
-
-
-
-    <div class="jumbotron">
+ <div class="jumbotron">
         <div class="container">
             <h1><?php echo $cleverMessage ?></h1>
             <p>Over <?php echo $pupCount ?> pet friends!</p>
             <p><a class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
         </div>
     </div>
-
-
 
     <div class="container">
         <div class="row">
@@ -49,10 +43,8 @@ $cleverMessage= "All the love, none of the crap!";
                         </blockquote>
                     </div>
             <?php } ?>   
-
         </div>
     </div>
+    <hr>
 
-        <hr>
-        
 <?php require 'layout/footer.php'; ?>
