@@ -1,0 +1,370 @@
+{
+    "steps": [
+        {
+            "id": "start",
+            "name": "start",
+            "description": null
+        },
+        {
+            "id": "basics-first-echo",
+            "name": "Basics: First echo",
+            "description": null
+        },
+        {
+            "id": "basics-open-php-tag",
+            "name": "Basics: Open php tag",
+            "description": null
+        },
+        {
+            "id": "basics-variable",
+            "name": "Basics: Variable",
+            "description": null
+        },
+        {
+            "id": "basics-print-variable",
+            "name": "Basics: Print variable",
+            "description": null
+        },
+        {
+            "id": "basics-number-variable",
+            "name": "Basics: Number variable",
+            "description": null
+        },
+        {
+            "id": "basics-syntax-error",
+            "name": "Basics: Syntax error",
+            "description": null
+        },
+        {
+            "id": "basics-fix-syntax",
+            "name": "Basics: Fix syntax",
+            "description": null
+        },
+        {
+            "id": "functions-using-rand",
+            "name": "Functions: Using rand",
+            "description": null
+        },
+        {
+            "id": "functions-rand-with-argument",
+            "name": "Functions: rand with argument",
+            "description": null
+        },
+        {
+            "id": "functions-rand-2-arguments",
+            "name": "Functions: rand 2 arguments",
+            "description": null
+        },
+        {
+            "id": "functions-ucwords",
+            "name": "Functions: ucwords",
+            "description": null
+        },
+        {
+            "id": "functions-misisng-arg-error",
+            "name": "Functions: Misisng arg error",
+            "description": null
+        },
+        {
+            "id": "functions-using-strtolower-with-an-echo",
+            "name": "Functions: Using strtolower with an echo",
+            "description": null
+        },
+        {
+            "id": "functions-fxns-in-your-fxns-strrev",
+            "name": "Functions: fxns in your fxns: strrev",
+            "description": null
+        },
+        {
+            "id": "functions-call-order-with-strtoupper",
+            "name": "Functions: call order with strtoupper",
+            "description": null
+        },
+        {
+            "id": "functions-using-multiple-lines-vars",
+            "name": "Functions: Using multiple lines\/vars",
+            "description": null
+        },
+        {
+            "id": "functions-reverting-to-one-line",
+            "name": "Functions: Reverting to one line",
+            "description": null
+        },
+        {
+            "id": "loops-print-out-3-pets",
+            "name": "Loops: Print out 3 pets",
+            "description": null
+        },
+        {
+            "id": "loops-create-empty-array",
+            "name": "Loops: Create empty array",
+            "description": null
+        },
+        {
+            "id": "loops-put-pets-in-array",
+            "name": "Loops: Put pets in array",
+            "description": null
+        },
+        {
+            "id": "loops-first-foreach",
+            "name": "Loops: First foreach",
+            "description": null
+        },
+        {
+            "id": "loops-change-foreach-var-name",
+            "name": "Loops: Change foreach var name",
+            "description": null
+        },
+        {
+            "id": "loops-var-dump",
+            "name": "Loops: var_dump",
+            "description": null
+        },
+        {
+            "id": "loops-playing-with-indexes",
+            "name": "Loops: Playing with indexes",
+            "description": null
+        },
+        {
+            "id": "loops-undefined-index",
+            "name": "Loops: Undefined index",
+            "description": null
+        },
+        {
+            "id": "loops-remove-bad-index",
+            "name": "Loops: Remove bad index",
+            "description": null
+        },
+        {
+            "id": "loops-add-a-number-into-array",
+            "name": "Loops: Add a number into array",
+            "description": null
+        },
+        {
+            "id": "loops-remove-14-from-array",
+            "name": "Loops: Remove 14 from array",
+            "description": null
+        },
+        {
+            "id": "arrays2-creating-pancake-array",
+            "name": "Arrays2: Creating pancake array",
+            "description": null
+        },
+        {
+            "id": "arrays2-associative",
+            "name": "Arrays2: Associative",
+            "description": null
+        },
+        {
+            "id": "arrays2-adding-breed-key-later",
+            "name": "Arrays2: Adding breed key later",
+            "description": null
+        },
+        {
+            "id": "array2-adding-new-indexed-entry",
+            "name": "Array2: Adding new indexed entry",
+            "description": null
+        },
+        {
+            "id": "array3-add-pet1-3-arrays",
+            "name": "Array3: Add pet1-3 arrays",
+            "description": null
+        },
+        {
+            "id": "array3-var-dump-multi-dimensional-array",
+            "name": "Array3: var_dump multi-dimensional array",
+            "description": null
+        },
+        {
+            "id": "array3-accessing-keys",
+            "name": "Array3: Accessing keys",
+            "description": null
+        },
+        {
+            "id": "array3-using-cutepet-key",
+            "name": "Array3: Using cutePet key",
+            "description": null
+        },
+        {
+            "id": "array3-using-foreach-for-all-pets",
+            "name": "Array3: Using foreach for all pets",
+            "description": null
+        },
+        {
+            "id": "array3-count-pets",
+            "name": "Array3: count($pets)",
+            "description": null
+        },
+        {
+            "id": "array3-moving-all-logic-to-the-top",
+            "name": "Array3: Moving all logic to the top",
+            "description": null
+        },
+        {
+            "id": "array3-array-reverse",
+            "name": "Array3: array_reverse",
+            "description": null
+        },
+        {
+            "id": "json-dumping-out-json-encode",
+            "name": "JSON: Dumping out json_encode",
+            "description": null
+        },
+        {
+            "id": "json-file-get-contents",
+            "name": "JSON: file_get_contents",
+            "description": null
+        },
+        {
+            "id": "json-bad-filename",
+            "name": "JSON: bad filename",
+            "description": null
+        },
+        {
+            "id": "json-json-decode",
+            "name": "JSON: json_decode",
+            "description": null
+        },
+        {
+            "id": "json-json-decode-as-associative-array",
+            "name": "JSON: json_decode as associative array",
+            "description": null
+        },
+        {
+            "id": "json-using-the-file-json-for-pets",
+            "name": "JSON: Using the file json for pets",
+            "description": null
+        },
+        {
+            "id": "json-changing-filename-key-to-image",
+            "name": "JSON: Changing filename key to image",
+            "description": null
+        },
+        {
+            "id": "json-move-file-into-data",
+            "name": "JSON: Move file into data",
+            "description": null
+        },
+        {
+            "id": "if-remove-age-key-from-json",
+            "name": "If: Remove age key from json",
+            "description": null
+        },
+        {
+            "id": "if-if-with-just-true",
+            "name": "If: if with just true",
+            "description": null
+        },
+        {
+            "id": "if-array-key-exists",
+            "name": "If: array_key_exists",
+            "description": null
+        },
+        {
+            "id": "if-with-else",
+            "name": "If: with else",
+            "description": null
+        },
+        {
+            "id": "if-set-key-to-blank",
+            "name": "If: set key to blank",
+            "description": null
+        },
+        {
+            "id": "if-multi-level-if",
+            "name": "If: Multi-level if",
+            "description": null
+        },
+        {
+            "id": "if-else-for-inner-if",
+            "name": "If: else for inner if",
+            "description": null
+        },
+        {
+            "id": "if-using",
+            "name": "If: Using &&",
+            "description": null
+        },
+        {
+            "id": "if-look-for-hidden-age",
+            "name": "If: Look for hidden age",
+            "description": null
+        },
+        {
+            "id": "if-elseif",
+            "name": "If: elseif",
+            "description": null
+        },
+        {
+            "id": "if-middle-part-of-elseif",
+            "name": "If: Middle part of elseif",
+            "description": null
+        },
+        {
+            "id": "if-fix-syntax",
+            "name": "If: Fix syntax",
+            "description": null
+        },
+        {
+            "id": "new-page-create-contact-php",
+            "name": "New Page: Create contact.php",
+            "description": null
+        },
+        {
+            "id": "create-function-use-get-pets",
+            "name": "Create Function: use get_pets()",
+            "description": null
+        },
+        {
+            "id": "create-function-create-get-pets",
+            "name": "Create Function: create get_pets()",
+            "description": null
+        },
+        {
+            "id": "create-function-return-a-value",
+            "name": "Create Function: Return a value",
+            "description": null
+        },
+        {
+            "id": "create-function-add-real-get-pets-body",
+            "name": "Create Function: Add real get_pets() body",
+            "description": null
+        },
+        {
+            "id": "include-changing-contact-page",
+            "name": "Include: Changing contact page",
+            "description": null
+        },
+        {
+            "id": "include-use-get-pets-on-contact-php",
+            "name": "Include: Use get_pets on contact.php",
+            "description": null
+        },
+        {
+            "id": "include-require-index-php",
+            "name": "Include: require index.php",
+            "description": null
+        },
+        {
+            "id": "include-new-functions-php-require",
+            "name": "Include: New functions.php + require",
+            "description": null
+        },
+        {
+            "id": "include-require-once",
+            "name": "Include: require_once",
+            "description": null
+        },
+        {
+            "id": "include-require",
+            "name": "Include: require",
+            "description": null
+        },
+        {
+            "id": "layout-create-and-use-header-footer",
+            "name": "Layout: Create and use header\/footer",
+            "description": null
+        }
+    ],
+    "sha": "ec71cc4daeab058f3504c91b8cf500d13da85d3c"
+}
