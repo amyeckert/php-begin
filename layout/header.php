@@ -1,3 +1,12 @@
+<!--
+***************************************************************
+This is where the html for the site header lives. 
+require on any new page that needs this header. 
+***************************************************************
+-->
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

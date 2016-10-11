@@ -1,8 +1,25 @@
-        <footer>
-            <p>&copy; AirPupnMeow.com</p>
-        </footer>
+<!--
+***************************************************************
+This is where the html for the site footer lives. 
+require on any new page that needs this footer. 
+***************************************************************
+-->
+
+
+
+
+
+
+
+
+
+
+
+<footer>
+    <p>&copy; AirPupnMeow.com</p>
+</footer>
     </div>
-    <!-- /container -->
+    <!-- closes above /container NEED THIS! -->
 
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
