@@ -6,35 +6,100 @@
         "weight": 8,
         "bio": "The park, The pool or the Playground - I love to go anywhere! I am really great at... SQUIRREL!",
         "filename": "pet1.png"
-    }, {
+    },
+    {
         "name": "Spark Pug",
         "breed": "Pug",
         "weight": 11,
         "bio": "You want to go to the dog park in style? Then I am your pug!",
         "filename": "pet2.png"
-
-    }, {
+    },
+    {
         "name": "Pico de Gato",
         "breed": "Bengal",
         "age": "hidden",
         "weight": 9,
         "bio": "Oh hai, if you do not have a can of salmon I am not interested.",
         "filename": "pet3.png"
-    }, {
+    },
+    {
         "name": "Pancake",
         "breed": "Bulldog",
         "age": "1 year",
         "weight": 9,
         "bio": "Treats and Snoozin!",
         "filename": "pancake.png"
-
-    }, {
+    },
+    {
         "name": "Pancake",
         "breed": "Bulldog",
         "age": "hidden",
         "weight": 9,
         "bio": "Treats and Snoozin!",
         "filename": "pancake.png"
-
+    },
+    {
+        "name": ";lhopsudhivnc",
+        "breed": null,
+        "weight": null,
+        "bio": null,
+        "age": "",
+        "image": ""
+    },
+    {
+        "name": ";lhopsudhivnc",
+        "breed": null,
+        "weight": null,
+        "bio": null,
+        "age": "",
+        "image": ""
+    },
+    {
+        "name": ";lhopsudhivnc",
+        "breed": null,
+        "weight": null,
+        "bio": null,
+        "age": "",
+        "image": ""
+    },
+    {
+        "name": ";lkh;oihogopih'pjpoup",
+        "breed": null,
+        "weight": null,
+        "bio": null,
+        "age": "",
+        "image": ""
+    },
+    {
+        "name": "this is the biggest dog ever. ",
+        "breed": null,
+        "weight": null,
+        "bio": null,
+        "age": "",
+        "image": ""
+    },
+    {
+        "name": "Booger",
+        "breed": "Bichon",
+        "weight": "800",
+        "bio": "this is the biggest dog ever. ",
+        "age": "",
+        "image": ""
+    },
+    {
+        "name": "Nasty pup",
+        "breed": "pitbull",
+        "weight": "9",
+        "bio": "no but yes but no but ",
+        "age": "",
+        "image": ""
+    },
+    {
+        "name": "New pet",
+        "breed": "I dunno",
+        "weight": "100",
+        "bio": "biggest one ever. poop.",
+        "age": "",
+        "image": ""
     }
 ]
