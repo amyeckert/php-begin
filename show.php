@@ -48,24 +48,56 @@ $pet = get_pet($id);
                     </tr>
                     <tr>
                         <th>Neutered?</th>
-                        <td><?php echo $pet['neutered']; ?></td>
+                        <td><?php 
+                             if ($pet['neutered'] == '' || $pet['neutered'] == null) {
+                               echo 'Yes';
+                            }
+                            else {
+                                echo 'No';
+                                // echo $pet['potty']; 
+                            }
+                            ?>
+                        </td>
                     </tr>
 
                     <tr>
                         <th>House-trained?</th>
-                        <td><?php echo $pet['potty']; ?></td>
+                        <td>
+                        <?php 
+                            if ($pet['potty']== '') {
+                                echo 'No';
+                            }
+                            else {
+                                echo 'Yes';
+                            }
+                            ?>
+                        </td>
                     </tr>
 
                     <tr>
                         <th>Obedience-trained?</th>
-                        <td><?php echo $pet['obedience'] ?></td>
+                        <td><?php 
+                                if ($pet['obedience'] == '') {
+                                echo 'No';
+                            }
+                            else {
+                                echo 'Yes';
+                            }
+                            ?>
+                        </td>
                     </tr>
 
                     <tr>
                     <th>Rescued?</th>
-                        <td><?php echo $pet['rescued']; ?></td>
+                        <td><?php 
+                                if ($pet['rescued'] == '') {
+                                echo 'No';
+                            }
+                            else {
+                                echo 'Yes';
+                            }
+                            ?></td>
                     </tr>
-
                 </tbody>
             </table>
         </div>
