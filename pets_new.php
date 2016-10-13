@@ -24,9 +24,11 @@ $name = $breed = $gender = $age = $weight = $neutered = $potty = $obedience = $r
 $messages = array(
     'nameErr' => 'Name is required',
     'breedErr' => 'Please enter a breed.',
-    'genderErr' => 'Please select one.',
+    'selectErr' => 'Please select one.',
     'ageErr' => 'Please select an age.',
-    'weightErr' => 'Please select an weight.',
+    'weightErr' => 'Please select a weight.',
+    'charErr' => 'Only letters and white space allowed',
+    'numberErr' => 'Only whole numbers allowed'
 );
 
 function test_text($text_data) {
@@ -49,10 +51,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (empty($_POST["name"])) {
         echo $messages['nameErr'];
     } else {
-        $name = test_input($_POST["name"]);
+        $name = test_text($_POST["name"]);
     // check if name only contains letters and whitespace
         if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
-          $charErr = "Only letters and white space allowed"; 
+          echo $charErr;
         }
     }
 
@@ -64,7 +66,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         $breed = test_text($_POST["breed"]);
         if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
-          $nameErr = "Only letters and white space allowed"; 
+          echo $charErr;
         }
     }
 
@@ -200,8 +202,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <input type="text" name="breed" id="pet-breed" class="form-control"
                         value="<?php echo $breed;?>" />
 
-                    <span class="error">* <?php echo $messages['breedErr']; ?></span>
-                    <br><br>
+                    <!-- <span class="error">* <?php //echo $messages['breedErr']; ?></span>
+                    <br><br> -->
                 </div>
 
                 <div class= "form-group">
@@ -215,8 +217,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <?php if (isset($gender) && $gender=="male") echo "checked";?> 
                         value="Male" /><p>Male</p>
 
-                    <span class="error">* <?php echo $messages['genderErr'];?></span>
-                    <br><br>
+                   <!--  <span class="error">* <?php //echo $messages['selectErr'];?></span>
+                    <br><br> -->
                 </div>
 
                 <div class= "form-group">
@@ -224,8 +226,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <input type="number" name="age" id="pet-age" class="form-control"
                         value="<?php echo $age;?>" />
 
-                    <span class="error">* <?php echo $messages['ageErr']; ?></span>
-                    <br><br>
+                    <!-- <span class="error">* <?php //echo $messages['numberErr']; ?></span>
+                    <br><br> -->
 
                 </div>
 
@@ -234,8 +236,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <input type="number" name="weight" id="pet-weight" class="form-control"
                         value="<?php echo $weight;?>" />
 
-                    <span class="error">* <?php echo $messages['weightErr']; ?></span>
-                    <br><br>
+                 <!--    <span class="error">* <?php //echo $messages['numberErr']; ?></span>
+                    <br><br> -->
                 </div>
 
                  <div class= "form-group"> 
