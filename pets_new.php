@@ -4,7 +4,8 @@
 <?php
 
 //  define variables and set to empty values
-$name = $breed = $gender = $age = $weight = $neutered = $potty = $obedience = $rescued = $bio = $regio = NULL;
+$name = $breed = $gender = $age = $weight =  $bio = $regio = NULL;
+$neutered = $potty = $obedience = $rescued = 0;
 
 // $messages = array(
     // 'nameErr' => 'Name is required',
@@ -19,9 +20,9 @@ $name = $breed = $gender = $age = $weight = $neutered = $potty = $obedience = $r
 // );
 
 //error messages
-$requiredErr = 'Please fill out this field.';
-$charErr = 'Only letters and spaces allowed.';
-$numberErr = 'Please enter a number.';
+$requiredErr = 'Please fill out this field.</br>';
+$charErr = 'Only letters and spaces are allowed.</br>';
+$numberErr = 'Please enter a number.</br>';
 
 //sanitize any text
 function clean_text($text_data) {
@@ -31,6 +32,7 @@ function clean_text($text_data) {
 
     return $text_data;
 }
+
 //check if it only contains letters and whitespace
 function test_text($text_data) {
     if (!preg_match("/^[a-zA-Z ]*$/",$text_data)) {
@@ -38,6 +40,7 @@ function test_text($text_data) {
     } 
     return TRUE; 
 }
+
 //check if a number was entered in a number field
 function test_number($number_data) {
     if (!is_numeric($number_data)) {
@@ -48,26 +51,33 @@ function test_number($number_data) {
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $isValid = TRUE;
+    print '<pre>';
+    print_r($_POST);
+    print '</pre>';
 
     foreach ($_POST as $key => $value) {
 
-        switch ($key) {
+        if (empty($value)) {
+            $isValid = FALSE;
+            echo $requiredErr;
+        } 
+
+        // if (!empty($value) || $value){
+
+
+        // }
+        else {
+            switch ($key) {
 
             case 'name':
-                if (empty($value)) {
+                if (test_text($value) == FALSE) {
                     $isValid = FALSE;
-                    echo $requiredErr;
+                    echo $charErr;  // failed test
                 } 
-                else {
-                    if (test_text($value) == FALSE) {
-                        $isValid = FALSE;
-                        echo $charErr;  // failed test
-                    } 
-                    else {              //passed test
-                        clean_text($value);
-                        $isValid = TRUE;
+                else {              //passed test
+                    clean_text($value);
+                    $isValid = TRUE;
 
-                    }
                 }
                 $name = $value;
                 break; 
@@ -81,19 +91,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 break;     
 
             case 'age':
-                if (empty($value)) {
+
+                // $value ="string";
+
+                if (test_number($value) == FALSE) {
                     $isValid = FALSE;
-                    echo $numberErr;
+                    echo $numberErr; 
                 } 
-                else {
-                    if (test_number($value) == FALSE) {
-                        $isValid = FALSE;
-                        echo $numberErr; 
-                    } 
-                    else {              //passed test
-                        $isValid = TRUE;
-                    }
-                } 
+                else {            
+                    $isValid = TRUE;
+                }
+                
                 $age = $value;
                 break;       
 
@@ -102,19 +110,23 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 break;
 
             case 'neutered':
-                $neutered = $value;
+                if ($value = 'on'){
+                    $neutered = TRUE;
+                }
+
+                // $neutered = $value;
                 break;
 
             case 'potty':
-                $potty = $value;
+                // $potty = $value;
                 break;
 
             case 'obedience':
-                $obedience = $value;
+                // $obedience = $value;
                 break;
 
             case 'rescued':
-                $rescued = $value;
+                // $rescued = $value;
                 break;
         
             case 'region':
@@ -127,36 +139,45 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 
         }
     }
-        
-    // if the form $isValid = TRUE;, save the new pet in an array using the properties fromthe form. 
-    $pets = array();
+       
+}       
+// if the form $isValid = TRUE;, save the new pet in an array using the properties fromthe form. 
+$pets = array();
 
-    $newPet = array(
-        'name' => $name, // where $name is the value entered in the form field, etc. 
-        'breed' => $breed,
-        'gender' => $gender,
-        'neutered' => $neutered,
-        'potty' => $potty,
-        'obedience' => $obedience,
-        'rescued' => $rescued,
-        'region' => $region,
-        'age'=> $age,
-        'weight' => $weight,
-        'bio' => $bio, 
-        'image' => '',
-        );
-    // add new pet to $pets array, without a specified index.
-    $pets[] = $newPet;  
+$newPet = array(
+    'name' => $name, // where $name is the value entered in the form field, etc. 
+    'breed' => $breed,
+    'gender' => $gender,
+    'neutered' => $neutered,
+    'potty' => $potty,
+    'obedience' => $obedience,
+    'rescued' => $rescued,
+    'region' => $region,
+    'age'=> $age,
+    'weight' => $weight,
+    'bio' => $bio, 
+    'image' => '',
+    );
 
-    // if form is completely validated
-    if ($isValid) {
-        save_pets($pets); //save to db:
+print '<pre>';
+print_r($newPet);
+print '</pre>';
 
-        //redirect to home page after submission so additional submissions are unique: 
-        // DO THIS FOR A FORM SUBMIT if form is valid
-        header('Location: /'); //
-        die;
-    }
+
+
+// add new pet to $pets array, without a specified index.
+$pets[] = $newPet;  
+
+// if form is completely validated
+if ($isValid) {
+    save_pets($pets); //save to db:
+
+    //redirect to home page after submission so additional submissions are unique: 
+    // DO THIS FOR A FORM SUBMIT if form is valid
+    header('Location: /'); //
+    die;
+}
+    
     // if I was to write to a json file:
     // $json = json_encode($pets, JSON_PRETTY_PRINT); //encode the array as json, make it look nice
     // file_put_contents('data/pets.json', $json); //add it to the file.      
@@ -188,11 +209,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <label for="pet-gender" class="control-label">gender</label> 
                     
                     <input type="radio" name="gender" id="pet-gender" class="form-control"
-                        <?php if (isset($gender) && $gender=="female") echo "checked";?> 
-                        value="Female" checked="checked" /><p>Female</p>
+                        <?php if (isset($gender) && $gender=="Female") echo "checked";?> 
+                        value="Female" /><p>Female</p>
 
                     <input type="radio" name="gender" id="pet-gender" class="form-control"
-                        <?php if (isset($gender) && $gender=="male") echo "checked";?> 
+                        <?php if (isset($gender) && $gender=="Male") echo "checked";?> 
                         value="Male" /><p>Male</p>     
                 </div>
 
@@ -210,7 +231,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <h3>Select all that apply.</h3>
 
                     <label for="pet-neutered" class="control-label">Neutered</label> 
-                    <input type="checkbox" name="neutered" id="pet-neutered" class="form-control" />
+                    <input type="checkbox" name="neutered" id="pet-neutered" class="form-control" value="foo" />
 
                     <label for="pet-potty" class="control-label">House-trained</label> 
                     <input type="checkbox" name="potty" id="pet-potty" class="form-control" />

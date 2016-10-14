@@ -94,7 +94,7 @@ function save_pets($petsToSave) { //$petsToSave is defined on pets_new.php and p
         $sql .= "VALUES (:" . implode(", :", $cols) . ")";
 
         $stmt = $pdo->prepare($sql);
-        $stmt->execute($named);   
+        // $stmt->execute($named);   
     }
 }
 
