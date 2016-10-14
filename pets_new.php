@@ -1,147 +1,138 @@
 <?php require 'lib/functions.php'; ?>
-<?php require 'layout/header.php'; ?>
+
 
 <?php
 
 //  define variables and set to empty values
-$name = $breed = $gender = $age = $weight = $neutered = $potty = $obedience = $rescued = $bio = $region = "";
+$name = $breed = $gender = $age = $weight = $neutered = $potty = $obedience = $rescued = $bio = $regio = NULL;
 
-// make sure code doesn't break if form not filled out or it's missing.
+// $messages = array(
+    // 'nameErr' => 'Name is required',
+    // 'breedErr' => 'Please enter a breed.',
+    // 'selectErr' => 'Please select one.',
+    // 'ageErr' => 'Please select an age.',
+    // 'weightErr' => 'Please select a weight.',
+    // 'bioErr' => 'You must have something good to say!',
+    // 'requiredErr' => 'Please fill out this field.',
+    // 'charErr' => 'Only letters and spaces allowed.',
+    // 'numberErr' => 'Only whole numbers allowed.'
+// );
 
+//error messages
+$requiredErr = 'Please fill out this field.';
+$charErr = 'Only letters and spaces allowed.';
+$numberErr = 'Please enter a number.';
 
-//     // $name = test_text($_POST["name"]);
-//     $breed = test_text($_POST["breed"]);
-//     $gender = test_text($_POST["gender"]);
-//     $age = test_text($_POST["age"]);
-//     $weight = test_text($_POST["weight"]);
-//     $neutered = test_text($_POST["neutered"]);
-//     $potty = test_text($_POST["potty"]);
-//     $obedience = test_text($_POST["obedience"]);
-//     $rescued = test_text($_POST["rescued"]);
-//     $bio = test_text($_POST["bio"]);
-//     $region = test_text($_POST["region"]);
-// }
-$messages = array(
-    'nameErr' => 'Name is required',
-    'breedErr' => 'Please enter a breed.',
-    'selectErr' => 'Please select one.',
-    'ageErr' => 'Please select an age.',
-    'weightErr' => 'Please select a weight.',
-    'charErr' => 'Only letters and white space allowed',
-    'numberErr' => 'Only whole numbers allowed'
-);
+//sanitize any text
+function clean_text($text_data) {
+    $text_data = trim($text_data);
+    $text_data = stripslashes($text_data);
+    $text_data = htmlspecialchars($text_data);
 
-function test_text($text_data) {
-  $text_data = trim($text_data);
-  $text_data = stripslashes($text_data);
-  $text_data = htmlspecialchars($text_data);
-
-  return $text_data;
+    return $text_data;
 }
-
-// function test_number($number_data) {
-//     $number_data = ;
-//     $number_data
-
-
-// }
+//check if it only contains letters and whitespace
+function test_text($text_data) {
+    if (!preg_match("/^[a-zA-Z ]*$/",$text_data)) {
+        return FALSE; 
+    } 
+    return TRUE; 
+}
+//check if a number was entered in a number field
+function test_number($number_data) {
+    if (!is_numeric($number_data)) {
+        return FALSE;
+    }
+    return TRUE;    
+}  
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $isValid = TRUE;
 
-    if (empty($_POST["name"])) {
-        echo $messages['nameErr'];
-    } else {
-        $name = test_text($_POST["name"]);
-    // check if name only contains letters and whitespace
-        if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
-          echo $charErr;
+    foreach ($_POST as $key => $value) {
+        
+        switch ($key) {
+
+            case 'name':
+                if (empty($value)) {
+                    $isValid = FALSE;
+                    echo $requiredErr;
+                } 
+                else {
+                    if (test_text($value) == FALSE) {
+                        $isValid = FALSE;
+                        echo $charErr;  // failed test
+                    } 
+                    else {              //passed test
+                        clean_text($value);
+                        $isValid = TRUE;
+
+                    }
+                }
+                $name = $value;
+                break; 
+           
+            case 'breed':
+                $breed = $value;
+                break;
+          
+            case 'gender':
+                $gender = $value;
+                break;     
+
+            case 'age':
+                if (empty($value)) {
+                    $isValid = FALSE;
+                    echo $numberErr;
+                } 
+                else {
+                    if (test_number($value) == FALSE) {
+                        $isValid = FALSE;
+                        echo $numberErr; 
+                    } 
+                    else {              //passed test
+                        $isValid = TRUE;
+                    }
+                } 
+                $age = $value;
+                break;       
+
+            case 'weight':
+                $weight = $value;
+                break;
+
+            case 'neutered':
+                $neutered = $value;
+                break;
+
+            case 'potty':
+                $potty = $value;
+                break;
+
+            case 'obedience':
+                $obedience = $value;
+                break;
+
+            case 'rescued':
+                $rescued = $value;
+                break;
+        
+            case 'region':
+                $region = $value;
+                break;
+
+            case 'bio':
+                $bio = $value;
+                break;
+                
         }
     }
-
-
-    if (isset($_POST['breed'])) {
-        $breed = $_POST['breed'];
-    } elseif (empty($_POST['breed'])) {
-        $breedErr = 'Please enter a breed.';
-    } else {
-        $breed = test_text($_POST["breed"]);
-        if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
-          echo $charErr;
-        }
-    }
-
-
-    if (isset($_POST['gender'])) {
-        $gender = $_POST['gender'];
-    } elseif (empty($_POST['gender'])) {
-        $genderErr = 'Please select one.';
-    } else {
-        $gender = test_text($_POST["gender"]);
-    }
-
-
-    if (isset($_POST['age'])) {
-        $age = $_POST['age'];
-    } elseif (empty($_POST['age'])) {
-        $ageErr = 'Please select an age.';
-    } else {
-        // $age = test_text($_POST["age"]);
-    }
-
-
-    if (isset($_POST['weight'])) {
-        $weight=$_POST['weight'];
-    } elseif (empty($_POST['weight'])) {
-        $weightErr = 'Please enter a weight.';
-    } else {
-        // $weight = test_text($_POST["weight"]);
-    } 
-
-    if (isset($_POST['neutered'])) {
-        $neutered = $_POST['neutered'];
-    } else {
-        // $neutered = test_text($_POST["neutered"]);
-    }
-
-
-    if (isset($_POST['potty'])) {
-        $potty=$_POST['potty'];
-    } else {
-        $potty = '';
-    }
-
-    if (isset($_POST['obedience'])) {
-        $obedience=$_POST['obedience'];
-    } else {
-        $obedience = '';
-    }
-
-    if (isset($_POST['rescued'])) {
-        $rescued=$_POST['rescued'];
-    } else {
-        $rescued = '';
-    }
-
-    if (isset($_POST['region'])) {
-        $region=$_POST['region'];
-    } else {
-        $region = '';
-    }
-    
-    if (isset($_POST['bio'])) {
-        $bio=$_POST['bio'];
-    } elseif (empty($_POST['bio'])) {
-        $weightErr = 'You must have something good to say...';
-    }
-    else {
-        $bio = '';
-    }
-    //$pets = get_pets();
+        
+    // if the form $isValid = TRUE;, save the new pet in an array using the properties fromthe form. 
     $pets = array();
 
-    //to save a new pet to json, create an array using the properties needed. 
     $newPet = array(
-        'name' => $name,
+        'name' => $name, // where $name is the value entered in the form field, etc. 
         'breed' => $breed,
         'gender' => $gender,
         'neutered' => $neutered,
@@ -154,56 +145,50 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         'bio' => $bio, 
         'image' => '',
         );
-    $pets[] = $newPet; // add new pet to $pets array, without a specified index. 
+    // add new pet to $pets array, without a specified index.
+    $pets[] = $newPet;  
 
-    save_pets($pets);
-// echo '<pre>';
-// var_dump($pets);die;
-// echo '</pre>';
+    // if form is completely validated
+    if ($isValid) {
+        save_pets($pets);
+
+        //redirect to home page after submission so additional submissins are unique: 
+        // DO THIS FOR A FORM SUBMIT if form is valid
+        header('Location: /'); //
+        die;
+    }
+
+
+    //save to db:
+    
+    // if I was to write to a json file:
     // $json = json_encode($pets, JSON_PRETTY_PRINT); //encode the array as json, make it look nice
     // file_put_contents('data/pets.json', $json); //add it to the file.
 
-    //redirect to home page after submission so additional submissins are unique: 
-    //ALWAYS DO THIS FOR A FORM SUBMIT!
-    header('Location: /'); //
-    die;
-}
+        
+       
+}   
+
 ?>
-
-
-
+<?php require 'layout/header.php'; ?>
 <div class="container">
-<!-- <pre>
- <? //var_dump($data); ?>
-</pre> -->
-
-
     <div class="row">
         <div class="col-xs-6">
             <h1>Add your Pet!</h1>
 
             <!-- <form action="/pets_new.php" method="POST"> -->
             <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-
-            <form action="/pets_new.php" method="POST">
+            <!-- <form action="/pets_new.php" method="POST"> -->
                 <div class= "form-group">
                     <h3> Tell us about your pet:</h3>
 
                     <label for="pet-name" class="control-label">pet name</label> 
-                    <input type="text" name="name" id="pet-name" class="form-control"
-                        value="<?php echo $name;?>" />
-                     
-                    <!-- <span class="error">* <?php //echo $messages['nameErr']; ?></span>
-                    <br><br> -->
+                    <input type="text" name="name" id="pet-name" class="form-control"/>
                 </div>
                 
                 <div class= "form-group">
                     <label for="pet-breed" class="control-label">breed</label> 
-                    <input type="text" name="breed" id="pet-breed" class="form-control"
-                        value="<?php echo $breed;?>" />
-
-                    <!-- <span class="error">* <?php //echo $messages['breedErr']; ?></span>
-                    <br><br> -->
+                    <input type="text" name="breed" id="pet-breed" class="form-control" />                 
                 </div>
 
                 <div class= "form-group">
@@ -211,59 +196,47 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     
                     <input type="radio" name="gender" id="pet-gender" class="form-control"
                         <?php if (isset($gender) && $gender=="female") echo "checked";?> 
-                        value="Female" checked="checked"  /><p>Female</p>
+                        value="Female" checked="checked" /><p>Female</p>
 
                     <input type="radio" name="gender" id="pet-gender" class="form-control"
                         <?php if (isset($gender) && $gender=="male") echo "checked";?> 
-                        value="Male" /><p>Male</p>
-
-                   <!--  <span class="error">* <?php //echo $messages['selectErr'];?></span>
-                    <br><br> -->
+                        value="Male" /><p>Male</p>     
                 </div>
 
                 <div class= "form-group">
                     <label for="pet-age" class="control-label">age (years)</label> 
-                    <input type="number" name="age" id="pet-age" class="form-control"
-                        value="<?php echo $age;?>" />
-
-                    <!-- <span class="error">* <?php //echo $messages['numberErr']; ?></span>
-                    <br><br> -->
-
+                    <input type="number" name="age" id="pet-age" class="form-control" />
                 </div>
 
                 <div class= "form-group">
                     <label for="pet-weight" class="control-label">weight (lbs)</label> 
-                    <input type="number" name="weight" id="pet-weight" class="form-control"
-                        value="<?php echo $weight;?>" />
-
-                 <!--    <span class="error">* <?php //echo $messages['numberErr']; ?></span>
-                    <br><br> -->
+                    <input type="number" name="weight" id="pet-weight" class="form-control" />
                 </div>
 
                  <div class= "form-group"> 
                     <h3>Select all that apply.</h3>
 
                     <label for="pet-neutered" class="control-label">Neutered</label> 
-                    <input type="checkbox" name="neutered" id="pet-neutered" class="form-control" value="<?php echo $neutered;?>" />
+                    <input type="checkbox" name="neutered" id="pet-neutered" class="form-control" />
 
                     <label for="pet-potty" class="control-label">House-trained</label> 
-                    <input type="checkbox" name="potty" id="pet-potty" class="form-control" value="<?php echo $potty;?>" />
+                    <input type="checkbox" name="potty" id="pet-potty" class="form-control" />
 
                     <label for="pet-obedience" class="control-label">Obedience trained</label> 
-                    <input type="checkbox" name="obedience" id="pet-obedience" class="form-control" value="<?php echo $obedience;?>" />
+                    <input type="checkbox" name="obedience" id="pet-obedience" class="form-control" />
                     
                     <label for="pet-rescued" class="control-label">Rescued</label> 
-                    <input type="checkbox" name="rescued" id="pet-rescued" class="form-control" value="<?php echo $rescued;?>" />
+                    <input type="checkbox" name="rescued" id="pet-rescued" class="form-control" />
 
                 </div>
 
                 <div class= "form-group">
                     <label for="pet-region" class="control-label">Region</label> 
-                    <select name="pet-region">
-                          <option value="north">North</option>
-                          <option value="south">South</option>
-                          <option value="east">East</option>
-                          <option value="west">West</option>
+                    <select name="region">
+                        <option value="north">North</option>
+                        <option value="south">South</option>
+                        <option value="east">East</option>
+                        <option value="west">West</option>
                     </select>
                 </div>
 
@@ -271,6 +244,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <label for="pet-bio" class="control-label">pet bio</label> 
                     <input type="textarea" name="bio" id="pet-bio" class="form-control" />
                 </div>
+
                 <button type="submit" class="btn btn-primary">
                     <span class="glyphicon glyphicon-heart"> Add</span>
                 </button>

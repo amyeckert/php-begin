@@ -100,4 +100,8 @@ function save_pets($petsToSave) { //$petsToSave is defined on pets_new.php and p
     }
 }
 
+// function validate_form(){
+    
+// }
+
 ?>

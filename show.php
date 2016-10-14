@@ -49,11 +49,11 @@ $pet = get_pet($id);
                     <tr>
                         <th>Neutered?</th>
                         <td><?php 
-                             if ($pet['neutered'] == '' || $pet['neutered'] == null) {
-                               echo 'Yes';
+                             if ($pet['neutered'] == null) {
+                               echo 'No';
                             }
                             else {
-                                echo 'No';
+                                echo 'Yes';
                                 // echo $pet['potty']; 
                             }
                             ?>
@@ -64,7 +64,7 @@ $pet = get_pet($id);
                         <th>House-trained?</th>
                         <td>
                         <?php 
-                            if ($pet['potty']== '') {
+                            if ($pet['potty'] == null) {
                                 echo 'No';
                             }
                             else {
@@ -77,7 +77,7 @@ $pet = get_pet($id);
                     <tr>
                         <th>Obedience-trained?</th>
                         <td><?php 
-                                if ($pet['obedience'] == '') {
+                                if ($pet['obedience'] == null) {
                                 echo 'No';
                             }
                             else {
@@ -90,7 +90,7 @@ $pet = get_pet($id);
                     <tr>
                     <th>Rescued?</th>
                         <td><?php 
-                                if ($pet['rescued'] == '') {
+                                if ($pet['rescued'] == null) {
                                 echo 'No';
                             }
                             else {
