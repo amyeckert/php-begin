@@ -50,7 +50,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $isValid = TRUE;
 
     foreach ($_POST as $key => $value) {
-        
+
         switch ($key) {
 
             case 'name':
@@ -150,23 +150,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // if form is completely validated
     if ($isValid) {
-        save_pets($pets);
+        save_pets($pets); //save to db:
 
-        //redirect to home page after submission so additional submissins are unique: 
+        //redirect to home page after submission so additional submissions are unique: 
         // DO THIS FOR A FORM SUBMIT if form is valid
         header('Location: /'); //
         die;
     }
-
-
-    //save to db:
-    
     // if I was to write to a json file:
     // $json = json_encode($pets, JSON_PRETTY_PRINT); //encode the array as json, make it look nice
-    // file_put_contents('data/pets.json', $json); //add it to the file.
-
-        
-       
+    // file_put_contents('data/pets.json', $json); //add it to the file.      
 }   
 
 ?>
